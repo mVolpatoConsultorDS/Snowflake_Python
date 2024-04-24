@@ -7,6 +7,7 @@
 
 import time
 from snowflake.snowpark import Session
+import json
 #import snowflake.snowpark.types as T
 #import snowflake.snowpark.functions as F
 
@@ -67,6 +68,12 @@ def validate_raw_tables(session):
 # For local debugging
 if __name__ == "__main__":
     # Create a local Snowpark session
-    with Session.builder.getOrCreate() as session:
-        load_all_raw_tables(session)
-#        validate_raw_tables(session)
+    #with open('creds.json') as f:
+    #    connection_parameters = json.load(f)
+    #session = Session.builder.configs(connection_parameters).create()
+    #print(f"Current Database and schema: {session.get_fully_qualified_current_schema()}")
+    #print(f"Current Warehouse: {session.get_current_warehouse()}")
+    #load_all_raw_tables(session)
+#   validate_raw_tables(session)
+    session = Session.builder.getOrCreate()
+    print(session)
